@@ -5,7 +5,6 @@ from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import NoSuchElementException
 import time
 import pandas as pd
-import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import pyautogui
 import pyautogui
