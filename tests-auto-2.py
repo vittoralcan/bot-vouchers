@@ -52,7 +52,7 @@ def verificar_e_salvar_id(novo_id):
         # Se for um novo ID, salva no arquivo
         with open(nome_arquivo, "w") as arquivo:
             arquivo.write(novo_id)
-        print(f"Novo ID '{novo_id}' detectado. Prosseguindo...")
+        print(f"Novo ID '{novo_id}' detectado. Prosseguindo com automação...")
         return True
 
 def executar_resto_da_automacao():
