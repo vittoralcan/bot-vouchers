@@ -29,7 +29,7 @@ navegador.get("https://docs.google.com/forms/d/1R_ppy0-ZmkPu_U-J4hzj6Ga1IlpWVGBZ
 time.sleep(1)
 
 navegador.find_element(By.XPATH, '/html/body/div/div[3]/form/div[2]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div/div[1]/input').click()
-pyautogui.write('João Vítor Oliveira de Alcantara')
+pyautogui.write('Joao Vitor Oliveira de Alcantara')
 
 navegador.find_element(By.XPATH, '/html/body/div/div[3]/form/div[2]/div/div[2]/div[3]/div/div/div[2]/div/div[1]/div/div[1]/input').click()
 pyautogui.write('joaovitorapid@gmail.com')

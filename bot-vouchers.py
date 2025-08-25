@@ -12,6 +12,7 @@ import pyperclip
 import os
 import time
 from selenium.webdriver.chrome.options import Options
+from datetime import datetime
 
 #----------------- LEITURA DE ID DE HORÁRIO DA PLANILHA ------------------#
 
@@ -243,6 +244,9 @@ def main():
             
             pyautogui.hotkey('ctrl','v')
             time.sleep(1)
+
+            navegador.find_element(By.XPATH,'/html/body/section[2]/div[1]/div/div/div/div/div/form/div[1]/div/div/div[1]/div[2]/div/div/input')
+            time.sleep(5)
             
             print("Automação concluída.")
             
