@@ -128,16 +128,16 @@ def main():
             #caminho para chegar no preenchimento    
             navegador.find_element(By.XPATH, '/html/body/div[2]/div[1]/div/div/div/form/div[2]/button').click()
             
-            time.sleep(5)
+            time.sleep(10)
             
             
             
             navegador.find_element(By.XPATH, '/html/body/section[1]/aside/div[2]/div/ul/li[4]/a').click()
-            time.sleep(2)
+            time.sleep(3)
             
             navegador.find_element(By.XPATH, '/html/body/section[1]/aside/div[2]/div/ul/li[4]/ul/li[1]/a').click()
             
-            time.sleep(2)
+            time.sleep(3)
             
             navegador.find_element(By.XPATH, '/html/body/section[2]/div[1]/div/div/div/div/div/form/div[1]/div/div/div[6]/div[2]/div/input').click()
             time.sleep(2)
@@ -236,6 +236,7 @@ def main():
             time.sleep(1)
             
             pyautogui.press('right')
+            pyautogui.press('right')
             pyautogui.hotkey('ctrl','c')
             time.sleep(1)
             
@@ -248,57 +249,12 @@ def main():
             navegador.find_element(By.XPATH,'/html/body/section[2]/div[1]/div/div/div/div/div/form/div[1]/div/div/div[1]/div[2]/div/div/input')
             time.sleep(5)
 
+            
+
             #Leitura da data de visita ao clube ---------------------------------------------------------
-
-          # Inicializa o driver
-            service = Service('caminho/para/chromedriver')
-            driver = webdriver.Chrome(service=service)
-            driver.get("url_do_seu_site")
-
-            # 1. Lê a data da área de transferência
-            try:
-                data_string = pyperclip.paste()
-            except pyperclip.PyperclipException:
-                print("Erro: Não foi possível acessar a área de transferência. Certifique-se de que a data foi copiada.")
-                driver.quit()
-                exit()
-
-            # 2. Analisa a data e extrai o dia, mês e ano
-            # O formato de data que você usará deve corresponder ao formato da data na sua planilha
-            try:
-                data_alvo = datetime.strptime(data_string, "%d-%m-%Y") 
-                mes_alvo = data_alvo.strftime("%B").upper() # Ex: 'AGOSTO'
-                ano_alvo = str(data_alvo.year)
-                dia_alvo = str(data_alvo.day)
-            except ValueError:
-                print("Erro: O formato da data copiada está incorreto. Use o formato DD-MM-AAAA.")
-                driver.quit()
-                exit()
-
-            # Clique para abrir o calendário (substitua pelo seu seletor)
-            driver.find_element(By.ID, "data-nascimento").click()
-
-            # Encontre os elementos de navegação do calendário
-            calendario_mes_xpath = "//div[contains(@class, 'red-bg')]//div[contains(text(), 'AGOSTO')]"
-            calendario_ano_xpath = "//div[contains(@class, 'red-bg')]//div[contains(text(), '2025')]"
-            proximo_mes_xpath = "//div[contains(@class, 'red-bg')]//i[text()='chevron_right']"
-
-            # Loop para navegar nos meses até encontrar uma correspondência
-            while True:
-                mes_atual = driver.find_element(By.XPATH, calendario_mes_xpath).text.strip().upper()
-                ano_atual = driver.find_element(By.XPATH, calendario_ano_xpath).text.strip()
-                
-                if mes_atual == mes_alvo and ano_atual == ano_alvo:
-                    break
-                else:
-                    driver.find_element(By.XPATH, proximo_mes_xpath).click()
-                
-                time.sleep(0.5)
-
-            # Clique no dia correto
-            dia_xpath = f"//td[text()='{dia_alvo}']"
-            driver.find_element(By.XPATH, dia_xpath).click()
-                        
+        
+           
+            #------------------------------------------------------------------------------------------------------                        
             
             print("Automação concluída.")
             
