@@ -98,124 +98,117 @@ if __name__ == "__main__":
             if campo_senha:
                 navegador.find_element(By.XPATH, '/html/body/div[2]/div[1]/div/div/div/form/div[1]/div/div/div[2]/div/div[2]/input').send_keys(campo_senha)
                 
-            time.sleep(2)
+            time.sleep(4)
             
             #caminho para chegar no preenchimento    
             navegador.find_element(By.XPATH, '/html/body/div[2]/div[1]/div/div/div/form/div[2]/button').click()
             
-            time.sleep(10)
+            time.sleep(1)
             
             
             
             navegador.find_element(By.XPATH, '/html/body/section[1]/aside/div[2]/div/ul/li[4]/a').click()
-            time.sleep(3)
+            time.sleep(1)
             
             navegador.find_element(By.XPATH, '/html/body/section[1]/aside/div[2]/div/ul/li[4]/ul/li[1]/a').click()
             
-            time.sleep(3)
+            time.sleep(1)
             
             navegador.find_element(By.XPATH, '/html/body/section[2]/div[1]/div/div/div/div/div/form/div[1]/div/div/div[6]/div[2]/div/input').click()
             time.sleep(2)
             
             #abre a janela da planilha
             navegador.execute_script("window.open('https://docs.google.com/spreadsheets/d/1ylJBsGHpnk0qSENfGcpDobomFwW0SFmBQypN_VwuiN8/edit?resourcekey=&gid=619559408#gid=619559408', '_blank');")
-            time.sleep(10)
+            time.sleep(3)
             
             #Preencher NOME
             pyautogui.press('down') #econtra ID
             pyautogui.press('right')
             time.sleep(1)
             pyautogui.hotkey('ctrl', 'c')   #copia o ID 
-            time.sleep(1)
+           
             pyautogui.hotkey('ctrl', 'tab')  #volta para a janela do navegador
-            time.sleep(1)
+           
             pyautogui.hotkey('ctrl', 'v')   #cola o ID 
-            time.sleep(1)
+            
 
          
             pyautogui.hotkey('tab')
-            time.sleep(1)
+           
             
             # Preencher EMAIL.
             pyautogui.hotkey('ctrl', 'tab')
-            time.sleep(1)
+           
             pyautogui.press('right') #encontra email.
-            time.sleep(1)
+           
             pyautogui.hotkey('ctrl', 'c')  #copia e-mail.
-            time.sleep(1)
+           
             pyautogui.hotkey('ctrl', 'tab')
-            time.sleep(1)
+         
             pyautogui.hotkey('ctrl', 'v') #cola o e-mail.
-            time.sleep(1)
+          
 
             pyautogui.hotkey('tab')
-            time.sleep(1)
+           
             
+            #Preechimento DATA DE NASCIMENTO
             pyautogui.hotkey('ctrl', 'tab')
-            time.sleep(1)
+          
             pyautogui.press('right')
-            pyautogui.hotkey('ctrl', 'c')
-            time.sleep(1)
+            pyautogui.hotkey('ctrl', 'c') #copia a data de nascimento
+        
             pyautogui.hotkey('ctrl', 'tab')
-            time.sleep(1)
-            pyautogui.hotkey('ctrl', 'v')
-            time.sleep(1)
+          
+            pyautogui.hotkey('ctrl', 'v') #cola a data de nascimento
+         
             
             pyautogui.hotkey('tab')
-            time.sleep(1)
+           
             
+            #Preechimento CPF pt.1
             pyautogui.hotkey('space')
-            time.sleep(1)
-            pyautogui.hotkey('down')
+       
+            pyautogui.hotkey('down') #seleciona o campo CPF
             pyautogui.hotkey('enter')
-            time.sleep(1)
+            
             
             pyautogui.hotkey('tab')
             time.sleep(1)
             
+            #Preechimento CPF pt.2
             pyautogui.hotkey('ctrl', 'tab')
             time.sleep(1)
             pyautogui.press('right')
-            pyautogui.hotkey('ctrl', 'c')
+            pyautogui.hotkey('ctrl', 'c') #copia o CPF
             time.sleep(1)
             pyautogui.hotkey('ctrl', 'tab')
             time.sleep(1)
-            pyautogui.hotkey('ctrl', 'v')
-            time.sleep(1)
-            
-            pyautogui.hotkey('tab')
-            pyautogui.hotkey('tab')
-            time.sleep(1)
-            
-            pyautogui.hotkey('enter')
-            time.sleep(1)
-            
-            navegador.find_element(By.XPATH, '/html/body/section[2]/div[1]/div/div/div/div/div/form/div[1]/div/div/div[1]/div[2]/div/div/input').click()
-            time.sleep(1)
-            
-            pyautogui.hotkey('ctrl','tab')
-            time.sleep(1)
-            
-            pyautogui.press('right')
-            pyautogui.press('right')
-            pyautogui.hotkey('ctrl','c')
-            time.sleep(1)
-            
-            pyautogui.hotkey('ctrl','tab')
-            time.sleep(1)
-            
-            pyautogui.hotkey('ctrl','v')
+            pyautogui.hotkey('ctrl', 'v') #cola o CPF
             time.sleep(1)
 
-            navegador.find_element(By.XPATH,'/html/body/section[2]/div[1]/div/div/div/div/div/form/div[1]/div/div/div[1]/div[2]/div/div/input')
-            time.sleep(5)
+            pyautogui.hotkey('ctrl', 'tab')
+            time.sleep(1)
+
+            #Seleciona o DATA DE VISITA AO CLUBE      
+            pyautogui.press('right')
+            pyautogui.press('right')
+            pyautogui.hotkey('ctrl', 'c') #copia a data de visita ao clube
+            time.sleep(1)
+            pyautogui.hotkey('ctrl', 'tab')
+            time.sleep(1)
+            
+            navegador.find_element(By.XPATH,'/html/body/section[2]/div[1]/div/div/div/div/div/form/div[1]/div/div/div[1]/div[2]/div/div/input').click()
+            time.sleep(1)
+
+           #Leitura da data de visita ao clube ---------------------------------------------------------
+        
+           
+            #------------------------------------------------------------------------------------------------------      
+           
 
         finally:
 
-            #Leitura da data de visita ao clube ---------------------------------------------------------
-        
-           
-            #------------------------------------------------------------------------------------------------------          
+                 
             print("Automação concluída.")
 
 
