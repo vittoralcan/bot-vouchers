@@ -28,9 +28,12 @@ def testar_leitura_xpath(url, xpath_do_elemento):
         driver.find_element(By.XPATH, '/html/body/div[2]/div[1]/div/div/div/form/div[1]/div/div/div[2]/div/div[2]/input')
         pyautogui.write('32901548000107')
 
-        driver.find_element(By.XPATH,'/html/body/div[2]/div[1]/div/div/div/form/div[2]/button').click()
-
-        
+        driver.find_element(By.XPATH,'/html/body/section[1]/aside/div[2]/div/ul/li[3]/a').click()
+        time.sleep(4)
+        driver.find_element(By.XPATH,'/html/body/section[1]/aside/div[2]/div/ul/li[3]/a').click()
+        time.sleep(4)
+        driver.find_element(By.XPATH,'/html/body/section[1]/aside/div[2]/div/ul/li[3]/a').click()
+        time.sleep(4)
         # Aguarda um tempo para a página carregar completamente
         time.sleep(7) 
 

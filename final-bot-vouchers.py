@@ -4,6 +4,8 @@ import pyautogui #automação do teclado e mouse
 import time #tempo de espera
 import pyperclip #manipulação da área de transferência
 import os #interação com o sistema operacional
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 # - Section 1 - Abrir o navegador 
 navegador=webdriver.Chrome()
@@ -126,51 +128,51 @@ if __name__ == "__main__":
             pyautogui.press('right')
             time.sleep(1)
             pyautogui.hotkey('ctrl', 'c')   #copia o ID 
-           
+            time.sleep(1)
             pyautogui.hotkey('ctrl', 'tab')  #volta para a janela do navegador
-           
+            time.sleep(1)
             pyautogui.hotkey('ctrl', 'v')   #cola o ID 
-            
+            time.sleep(1)
 
          
             pyautogui.hotkey('tab')
-           
+            time.sleep(1)
             
             # Preencher EMAIL.
             pyautogui.hotkey('ctrl', 'tab')
-           
+            time.sleep(1)
             pyautogui.press('right') #encontra email.
-           
+            time.sleep(1)
             pyautogui.hotkey('ctrl', 'c')  #copia e-mail.
-           
+            time.sleep(1)
             pyautogui.hotkey('ctrl', 'tab')
-         
+            time.sleep(1)
             pyautogui.hotkey('ctrl', 'v') #cola o e-mail.
-          
+            time.sleep(1)
 
             pyautogui.hotkey('tab')
-           
+            time.sleep(1)
             
             #Preechimento DATA DE NASCIMENTO
             pyautogui.hotkey('ctrl', 'tab')
-          
+            time.sleep(1)
             pyautogui.press('right')
             pyautogui.hotkey('ctrl', 'c') #copia a data de nascimento
-        
+            time.sleep(1)
             pyautogui.hotkey('ctrl', 'tab')
-          
+            time.sleep(1)
             pyautogui.hotkey('ctrl', 'v') #cola a data de nascimento
-         
+            time.sleep(1)
             
             pyautogui.hotkey('tab')
-           
+            time.sleep(1)
             
             #Preechimento CPF pt.1
             pyautogui.hotkey('space')
-       
+            time.sleep(1)
             pyautogui.hotkey('down') #seleciona o campo CPF
             pyautogui.hotkey('enter')
-            
+            time.sleep(1)
             
             pyautogui.hotkey('tab')
             time.sleep(1)
@@ -189,7 +191,7 @@ if __name__ == "__main__":
             pyautogui.hotkey('ctrl', 'tab')
             time.sleep(1)
 
-            #Seleciona o DATA DE VISITA AO CLUBE      
+            #Seleciona a DATA DE VISITA AO CLUBE      
             pyautogui.press('right')
             pyautogui.press('right')
             pyautogui.hotkey('ctrl', 'c') #copia a data de visita ao clube
@@ -197,19 +199,21 @@ if __name__ == "__main__":
             pyautogui.hotkey('ctrl', 'tab')
             time.sleep(1)
             
+           
+
+           #Tabela comparativa de data de visita ao clube ----------------------------------------
             navegador.find_element(By.XPATH,'/html/body/section[2]/div[1]/div/div/div/div/div/form/div[1]/div/div/div[1]/div[2]/div/div/input').click()
             time.sleep(1)
 
-           #Leitura da data de visita ao clube ---------------------------------------------------------
-        
+            
+                
            
             #------------------------------------------------------------------------------------------------------      
-           
-
-        finally:
-
+#finalização do código
+        except Exception as e:
+            print(f"Automação finalizada: {e}")
                  
-            print("Automação concluída.")
+print("Automação concluída.")
 
 
 
