@@ -4,8 +4,8 @@ import pyautogui #automação do teclado e mouse
 import time #tempo de espera
 import pyperclip #manipulação da área de transferência
 import os #interação com o sistema operacional
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait #esperas explícitas
+from selenium.webdriver.support import expected_conditions as EC #condições para esperas explícitas
 
 # - Section 1 - Abrir o navegador 
 navegador=webdriver.Chrome()
@@ -95,7 +95,7 @@ if __name__ == "__main__":
             
             #login dentro do site UniSystem
             if campo_usuario:
-                navegador.find_element(By.XPATH, '/html/body/div[2]/div[1]/div/div/div/form/div[1]/div/div/div[1]/div/div[2]/input').send_keys(campo_usuario)
+                navegador.finlement(By.XPATH, '/html/body/div[2]/div[1]/div/div/div/form/div[1]/div/div/div[1]/div/div[2]/input').send_keys(campo_usuario)
             
             if campo_senha:
                 navegador.find_element(By.XPATH, '/html/body/div[2]/div[1]/div/div/div/form/div[1]/div/div/div[2]/div/div[2]/input').send_keys(campo_senha)
@@ -198,16 +198,24 @@ if __name__ == "__main__":
             time.sleep(1)
             pyautogui.hotkey('ctrl', 'tab')
             time.sleep(1)
+
+            #selecionar data de visita ao clube
+            navegador.find_element(By.XPATH, '/html/body/section[2]/div[1]/div/div/div/div/div/form/div[1]/div/div/div[1]/div[2]/div/div/input').click()
+            time.sleep(2)
             
            
 
            #Tabela comparativa de data de visita ao clube ----------------------------------------
-            navegador.find_element(By.XPATH,'/html/body/section[2]/div[1]/div/div/div/div/div/form/div[1]/div/div/div[1]/div[2]/div/div/input').click()
-            time.sleep(1)
+            
+            #lê o conteúdo da área de transferência
+            conteudo = pyperclip.paste()
+
+            #converte o conteúdo da área de transferência em uma lista
+            lista = conteudo.splitlines() #divide o conteúdo em linhas
 
             
-                
-           
+         
+
             #------------------------------------------------------------------------------------------------------      
 #finalização do código
         except Exception as e:

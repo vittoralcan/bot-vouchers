@@ -22,6 +22,8 @@ def comparar_texto_xpath_com_clipboard(url, xpath):
         texto_clipboard = pyperclip.paste()
         print(f"Texto do Clipboard: '{texto_clipboard}'")
 
+        
+
         # 2. Localiza o elemento usando o XPath
         elemento = driver.find_element(By.XPATH, '/html/body/div[5]/div/div[1]/div[3]/div[1]/div')
 
