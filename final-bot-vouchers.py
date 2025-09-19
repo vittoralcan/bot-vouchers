@@ -207,11 +207,7 @@ if __name__ == "__main__":
 
            #Tabela comparativa de data de visita ao clube ----------------------------------------
             
-            #lê o conteúdo da área de transferência
-            conteudo = pyperclip.paste()
-
-            #converte o conteúdo da área de transferência em uma lista
-            lista = conteudo.splitlines() #divide o conteúdo em linhas
+            
 
             
          
