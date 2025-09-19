@@ -6,6 +6,8 @@ import pyperclip #manipulação da área de transferência
 import os #interação com o sistema operacional
 from selenium.webdriver.support.ui import WebDriverWait #esperas explícitas
 from selenium.webdriver.support import expected_conditions as EC #condições para esperas explícitas
+import datetime #manipulação de datas
+import sys #manipulação de sistema
 
 # - Section 1 - Abrir o navegador 
 navegador=webdriver.Chrome()
@@ -73,7 +75,11 @@ if __name__ == "__main__":
         print("Os textos são diferentes. Continuando com a automação.")
         # Automação de preenchimento das informações
         time.sleep(2)
+
+
         #--------- PREENCHIMENTO NO NAVEGADOR APÓS COLETA DE DADOS -------------#
+
+
                     # Acessar o site
         navegador.get("https://www.unisystemtec.com.br/portal_socio/index.php?class=LoginForm")
         time.sleep(1)
@@ -95,7 +101,7 @@ if __name__ == "__main__":
             
             #login dentro do site UniSystem
             if campo_usuario:
-                navegador.finlement(By.XPATH, '/html/body/div[2]/div[1]/div/div/div/form/div[1]/div/div/div[1]/div/div[2]/input').send_keys(campo_usuario)
+                navegador.find_element(By.XPATH, '/html/body/div[2]/div[1]/div/div/div/form/div[1]/div/div/div[1]/div/div[2]/input').send_keys(campo_usuario)
             
             if campo_senha:
                 navegador.find_element(By.XPATH, '/html/body/div[2]/div[1]/div/div/div/form/div[1]/div/div/div[2]/div/div[2]/input').send_keys(campo_senha)
@@ -105,19 +111,19 @@ if __name__ == "__main__":
             #caminho para chegar no preenchimento    
             navegador.find_element(By.XPATH, '/html/body/div[2]/div[1]/div/div/div/form/div[2]/button').click()
             
-            time.sleep(1)
+            time.sleep(12)
             
             
             
             navegador.find_element(By.XPATH, '/html/body/section[1]/aside/div[2]/div/ul/li[4]/a').click()
-            time.sleep(1)
+            time.sleep(4)
             
             navegador.find_element(By.XPATH, '/html/body/section[1]/aside/div[2]/div/ul/li[4]/ul/li[1]/a').click()
             
-            time.sleep(1)
+            time.sleep(7)
             
             navegador.find_element(By.XPATH, '/html/body/section[2]/div[1]/div/div/div/div/div/form/div[1]/div/div/div[6]/div[2]/div/input').click()
-            time.sleep(2)
+            time.sleep(4)
             
             #abre a janela da planilha
             navegador.execute_script("window.open('https://docs.google.com/spreadsheets/d/1ylJBsGHpnk0qSENfGcpDobomFwW0SFmBQypN_VwuiN8/edit?resourcekey=&gid=619559408#gid=619559408', '_blank');")
@@ -207,7 +213,94 @@ if __name__ == "__main__":
 
            #Tabela comparativa de data de visita ao clube ----------------------------------------
             
+            #1 - Pega o texto da área de transferência converte e salva em um arquivo -------------------------------------------------
+
+     
+            def converter_mes_e_salvar():
+                """
+                1. Pega a data da área de transferência (clipboard) no formato DD/MM/AAAA.
+                2. Converte o número do mês para o nome do mês em português.
+                3. Salva o resultado no arquivo 'data_cliente.txt'.
+                """
+                try:
+                    # Pega a data da área de transferência
+                    data_string = pyperclip.paste()
+                    
+                    # Dicionário de conversão de números para nomes de meses
+                    nomes_meses = {
+                        1: "JANEIRO", 2: "FEVEREIRO", 3: "MARÇO", 4: "ABRIL",
+                        5: "MAIO", 6: "JUNHO", 7: "JULHO", 8: "AGOSTO",
+                        9: "SETEMBRO", 10: "OUTUBRO", 11: "NOVEMBRO", 12: "DEZEMBRO"
+                    }
+
+                    # Converte a string da data para um objeto de data
+                    data_objeto = datetime.datetime.strptime(data_string, '%d/%m/%Y')
+                    
+                    # Extrai o número do mês e o ano
+                    mes_numero = data_objeto.month
+                    ano = data_objeto.year
+                    
+                    # Encontra o nome do mês usando o dicionário
+                    mes_nome = nomes_meses.get(mes_numero)
+
+                    if mes_nome:
+                        # Formata a string final no formato "MÊS ANO"
+                        resultado = f"{mes_nome} {ano}"
+                        caminho_arquivo = "data_cliente.txt"
+                        
+                        # Cria ou sobrescreve o arquivo e salva o resultado
+                        # O 'with open(...)' garante que o arquivo será fechado automaticamente
+                        with open(caminho_arquivo, 'w', encoding='utf-8') as arquivo:
+                            arquivo.write(resultado)
+                        
+                        print(f"Sucesso! O texto '{resultado}' foi salvo no arquivo '{caminho_arquivo}'.")
+                    else:
+                        print("Erro: O número do mês na data não é válido.")
+
+                except ValueError:
+                    print("Erro: A data na área de transferência não está no formato DD/MM/AAAA.")
+                except pyperclip.PyperclipException:
+                    print("Erro: A biblioteca 'pyperclip' não conseguiu acessar a área de transferência. Certifique-se de que ela está instalada e que o sistema suporta.")
+                except Exception as e:
+                    print(f"Ocorreu um erro inesperado: {e}")
+
+            # --- Chamada da função para executar o código ---
+            if __name__ == "__main__":
+                converter_mes_e_salvar()
+
+            #2 - Lê o texto encontrado dentro do xpath --------------------------------------------------------------------------------------------
+            # O código a seguir assume que a variável 'navegador' já está inicializada
+            # Por exemplo: navegador = webdriver.Chrome()
+
+            # Encontra o elemento e lê o texto
+            elemento = navegador.find_element(By.XPATH, '/html/body/div[5]/div/div[1]/div[3]/div[1]/div')
+            texto_lido = elemento.text
+
+            # Exibe o texto no terminal
+            print(f"Texto lido: {texto_lido}")
+
+            # --- Novo bloco de código para salvar o texto em um arquivo .txt ---
+
+            # Define o nome do arquivo
+            nome_arquivo = "data_site.txt"
+
+            # Abre o arquivo em modo de escrita ('w') e salva o texto
+            # A instrução 'with open(...)' garante que o arquivo será fechado corretamente
+            with open(nome_arquivo, 'w', encoding='utf-8') as arquivo:
+                arquivo.write(texto_lido)
+
+            print(f"Texto salvo em {nome_arquivo}")
+
+            # Fim da operação
+
+
+            #3 - Compara o texto lido com o texto convertido --------------------------------------------------------------------------------------
             
+            
+            
+              
+
+           
 
             
          
