@@ -269,6 +269,7 @@ if __name__ == "__main__":
                 converter_mes_e_salvar()
 
             #2 - Lê o texto encontrado dentro do xpath --------------------------------------------------------------------------------------------
+            
             # O código a seguir assume que a variável 'navegador' já está inicializada
             # Por exemplo: navegador = webdriver.Chrome()
 
